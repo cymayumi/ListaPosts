@@ -8,9 +8,10 @@ import com.mayumi.starwars.ui.act002.ListaActivity
 import com.mayumi.starwars.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainActivityContract.I_View {
 
     private lateinit var context: Context
+    private lateinit var mPresenter : MainActivityContract.I_Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,14 +22,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun initVar() {
         context = this@MainActivity
+        mPresenter = MainActivityPresenter(this)
+
     }
 
     private fun initActions() {
         btn_filmes.setOnClickListener {
-            val mIntent = Intent(context, ListaActivity::class.java)
-
-            startActivity(mIntent)
-            finish()
+            executaNavegacao()
         }
     }
+
+    override fun executaNavegacao() {
+        val mIntent = Intent(context, ListaActivity::class.java)
+
+        startActivity(mIntent)
+        finish()
+    }
+
+
 }
