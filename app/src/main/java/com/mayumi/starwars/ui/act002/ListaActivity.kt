@@ -15,10 +15,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListaActivity : AppCompatActivity() {
+class ListaActivity : AppCompatActivity(), ListaContract.I_View {
 
     private lateinit var context: Context
     private lateinit var meuAdapter: MeuAdapter
+    private lateinit var mPresenter: ListaContract.I_Presenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,37 +32,24 @@ class ListaActivity : AppCompatActivity() {
 
     private fun initVar() {
         context = this@ListaActivity
-
+        mPresenter = ListaPresenter(this)
     }
 
     private fun initActions() {
-        carregarLista()
+        mPresenter.carregarLista()
     }
 
-    private fun carregarLista() {
-        val destinationService = ServiceBuilder.buildService(WebApi::class.java)
-        val requestCall = destinationService.getList()
+    override fun showLista(lista: List<Posts>) {
+        meuAdapter = MeuAdapter(
+            context,
+            R.layout.celula,
+            lista
+        )
 
-        requestCall.enqueue(object : Callback<List<Posts>> {
+        lista_id.adapter = meuAdapter
+    }
 
-            override fun onResponse(call: Call<List<Posts>>, response: Response<List<Posts>>) {
-                if (response.isSuccessful) {
-                    var listaPosts = response.body()!!
-
-                    meuAdapter = MeuAdapter(
-                        context,
-                        R.layout.celula,
-                        listaPosts
-                    )
-
-                    lista_id.adapter = meuAdapter
-
-                }
-            }
-
-            override fun onFailure(call: Call<List<Posts>>, t: Throwable) {
-                Toast.makeText(context, "Ocorreu um erro!", Toast.LENGTH_LONG).show()
-            }
-        })
+    override fun showErrorMsg() {
+        Toast.makeText(context, "Ocorreu um erro!", Toast.LENGTH_LONG).show()
     }
 }

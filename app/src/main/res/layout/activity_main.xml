@@ -8,7 +8,7 @@
 
 
     <Button
-            android:id="@+id/btn_filmes"
+            android:id="@+id/btn_comentarios"
             android:text="Carregar lista"
             android:background="#FFEB3B"
             android:layout_width="300dp"

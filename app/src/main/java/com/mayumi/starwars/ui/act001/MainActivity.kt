@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract.I_View {
     }
 
     private fun initActions() {
-        btn_filmes.setOnClickListener {
+        btn_comentarios.setOnClickListener {
             executaNavegacao()
         }
     }
