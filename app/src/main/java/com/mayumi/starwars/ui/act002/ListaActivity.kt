@@ -6,14 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mayumi.starwars.R
 import com.mayumi.starwars.model.Posts
-import com.mayumi.starwars.servico.ServiceBuilder
-import com.mayumi.starwars.servico.WebApi
 import com.mayumi.todo_teste.lista.MeuAdapter
 import kotlinx.android.synthetic.main.activity_lista.*
-
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ListaActivity : AppCompatActivity(), ListaContract.I_View {
 
