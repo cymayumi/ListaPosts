@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mayumi.starwars.R
 import com.mayumi.starwars.model.Posts
 import com.mayumi.todo_teste.lista.MeuAdapter
@@ -33,7 +34,7 @@ class ListaActivity : AppCompatActivity(), ListaContract.I_View {
         mPresenter.carregarLista()
     }
 
-    override fun showLista(lista: List<Posts>) {
+   /* override fun showLista(lista: List<Posts>) {
         meuAdapter = MeuAdapter(
             context,
             R.layout.celula,
@@ -41,6 +42,13 @@ class ListaActivity : AppCompatActivity(), ListaContract.I_View {
         )
 
         lista_id.adapter = meuAdapter
+    }*/
+
+    override fun showLista(lista: List<Posts>) {
+        lista_id.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = MeuAdapter(context, lista)
+        }
     }
 
     override fun showErrorMsg() {
