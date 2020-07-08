@@ -1,7 +1,9 @@
 package com.mayumi.starwars.ui.act002
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,16 +35,6 @@ class ListaActivity : AppCompatActivity(), ListaContract.I_View {
     private fun initActions() {
         mPresenter.carregarLista()
     }
-
-   /* override fun showLista(lista: List<Posts>) {
-        meuAdapter = MeuAdapter(
-            context,
-            R.layout.celula,
-            lista
-        )
-
-        lista_id.adapter = meuAdapter
-    }*/
 
     override fun showLista(lista: List<Posts>) {
         lista_id.apply {
