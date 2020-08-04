@@ -1,9 +1,7 @@
 package com.mayumi.starwars.ui.act002
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_lista.*
 class ListaActivity : AppCompatActivity(), ListaContract.I_View {
 
     private lateinit var context: Context
-    private lateinit var meuAdapter: MeuAdapter
     private lateinit var mPresenter: ListaContract.I_Presenter
 
 
@@ -39,7 +36,7 @@ class ListaActivity : AppCompatActivity(), ListaContract.I_View {
     override fun showLista(lista: List<Posts>) {
         lista_id.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = MeuAdapter(context, lista)
+            adapter = MeuAdapter(lista)
         }
     }
 
