@@ -36,7 +36,7 @@ class ListaActivity : AppCompatActivity(), ListaContract.I_View {
     override fun showLista(lista: List<Posts>) {
         lista_id.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = MeuAdapter(lista)
+            adapter = MeuAdapter(lista, context)
         }
     }
 
